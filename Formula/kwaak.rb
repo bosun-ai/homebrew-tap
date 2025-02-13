@@ -1,20 +1,20 @@
 class Kwaak < Formula
   desc "Run a team of autonomous agents on your code, right from your terminal"
   homepage "https://github.com/bosun-ai/kwaak"
-  version "0.9.0"
+  version "0.9.1"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.0/kwaak-aarch64-apple-darwin.tar.xz"
-      sha256 "664aea3a9389d0ecacbd7a5b57834defbe1d615e2f8fb39e589cc80a582732fa"
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.1/kwaak-aarch64-apple-darwin.tar.xz"
+      sha256 "5afba453dd09ee6e29d87c8a2cfed8f7cde497701c3c846dfea5d7477e6b5210"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.0/kwaak-x86_64-apple-darwin.tar.xz"
-      sha256 "d07cbef9db128b2f0c1f138a1fefd2cf6455ae3dd701547147711d49ad4c2cd2"
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.1/kwaak-x86_64-apple-darwin.tar.xz"
+      sha256 "6744d97627c3414f6a8a908416c8a4c1014700343863d280c52f69ebd5b48a72"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.0/kwaak-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "85b05d018c93ecbb0f637ed777e0e2d5bc7103fcf225c3299ce650b35220af1a"
+    url "https://github.com/bosun-ai/kwaak/releases/download/v0.9.1/kwaak-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "ec860ed4c19c7166c21d568bd93462da95696757752b5ce59dbbc2794e914a19"
   end
   license "MIT"
 
