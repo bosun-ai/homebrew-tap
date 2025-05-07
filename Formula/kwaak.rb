@@ -1,27 +1,34 @@
 class Kwaak < Formula
   desc "Run a team of autonomous agents on your code, right from your terminal"
   homepage "https://github.com/bosun-ai/kwaak"
-  version "0.17.0"
+  version "0.18.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/bosun-ai/kwaak/releases/download/v0.17.0/kwaak-aarch64-apple-darwin.tar.xz"
-      sha256 "91507fe15f3f94f9f860eed7f52f5937d1ef43723ce20227e2b357aa5fc55061"
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.18.0/kwaak-aarch64-apple-darwin.tar.xz"
+      sha256 "c13f7156ffe62bd3d25238152c83d3891e20f313650593b0b24161f22df6fe96"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/bosun-ai/kwaak/releases/download/v0.17.0/kwaak-x86_64-apple-darwin.tar.xz"
-      sha256 "7ce9e706ae88e3d581b97b33d590fa257013149d28d9e9d6e0e1952b72df1ef4"
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.18.0/kwaak-x86_64-apple-darwin.tar.xz"
+      sha256 "18dcb8359a6bcc03ea547d6d7729f752b8abee9404170ee6e85457b94ee8b151"
     end
   end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/bosun-ai/kwaak/releases/download/v0.17.0/kwaak-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "efce36eaae2ad14d34ce2f1c627cf74d3549a3075bcd37b336b87d89843c40e5"
+  if OS.linux?
+    if Hardware::CPU.arm?
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.18.0/kwaak-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "c920735cfae21c2fc3d0a7d229090cf575060a11bc0e92c8e609dd44f85dae72"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/bosun-ai/kwaak/releases/download/v0.18.0/kwaak-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "6fc4d8a1a513abc9ddf828167819ea0ef617370064c9c85a7c01f285f02c784c"
+    end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":     {},
-    "x86_64-apple-darwin":      {},
-    "x86_64-unknown-linux-gnu": {},
+    "aarch64-apple-darwin":      {},
+    "aarch64-unknown-linux-gnu": {},
+    "x86_64-apple-darwin":       {},
+    "x86_64-unknown-linux-gnu":  {},
   }.freeze
 
   def target_triple
@@ -42,6 +49,7 @@ class Kwaak < Formula
   def install
     bin.install "kwaak" if OS.mac? && Hardware::CPU.arm?
     bin.install "kwaak" if OS.mac? && Hardware::CPU.intel?
+    bin.install "kwaak" if OS.linux? && Hardware::CPU.arm?
     bin.install "kwaak" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
